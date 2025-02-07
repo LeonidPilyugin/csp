@@ -33,7 +33,7 @@ namespace Core
             double dE = this.energy.compute_energy(test) - this.energy.compute_energy(this.system);
             double probability = GLib.Math.fmin(1.0, GLib.Math.exp(-dE / this.temperature));
 
-            if (GLib.Random.double_range(0.0, 1.0) <= probability)
+            if (GLib.Random.double_range(0.0, 1.0) < probability)
                 this.system = test;
         }
     }
