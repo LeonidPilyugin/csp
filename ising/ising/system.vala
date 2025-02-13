@@ -72,5 +72,13 @@ namespace Ising
             res.array = this.array;
             return (Core.System) res;
         }
+
+        public int get_magmom()
+        {
+            int result = 0;
+            for (uint i = 0; i < this.array.length; i++)
+                result += (int) this.array[i];
+            return result;
+        }
     }
 }

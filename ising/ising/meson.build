@@ -1,6 +1,7 @@
 sources = files(
   'disturbance.vala',
   'energy.vala',
+  'energy6.vala',
   'system.vala'
 )
 
