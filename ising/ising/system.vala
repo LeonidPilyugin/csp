@@ -4,16 +4,19 @@ namespace Ising
 {
     public class System : Core.System
     {
-        private int8[] array = new int8[1];
+        private int8[]? array = null;
         private int size1 = 1;
         private int size2 = 1;
 
-        public System.create(int size1, int size2)
+        public System.create(int size1, int size2, owned int8[] array)
             requires (size1 > 0)
             requires (size2 > 0)
+            requires(array.length == size1 * size2)
         {
-            this.array = new int8[size1 * size2];
-            Memory.set(this.array, 1, sizeof(int8) * this.array.length);
+            bool f = true;
+            for (uint i = 0; i < array.length; i++)
+                if (array[i] != 1 || array[i] != -1) { f = false; break; }
+            this.array = array.copy();
             this.size1 = size1;
             this.size2 = size2;
         }
@@ -69,7 +72,7 @@ namespace Ising
             System res = new System();
             res.size1 = this.size1;
             res.size2 = this.size2;
-            res.array = this.array;
+            res.array = this.array.copy();
             return (Core.System) res;
         }
 

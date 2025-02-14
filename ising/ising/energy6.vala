@@ -2,28 +2,9 @@ using Core;
 
 namespace Ising
 {
-    public class Energy6 : Core.Energy
+    public class Energy6 : Energy
     {
-        private double J = 1.0;
-        private double H = 1.0;
-        
-        public Energy6.create(double J, double H)
-        {
-            this.J = J;
-            this.H = H;
-        }
-
-        public double get_j()
-        {
-            return this.J;
-        }
-
-        public double get_h()
-        {
-            return this.H;
-        }
-
-        public override double compute_energy(Core.System system)
+        public new double compute_energy(Core.System system)
             requires (system is System)
         {
             System isystem = (System) system;

@@ -4,8 +4,8 @@ namespace Ising
 {
     public class Energy : Core.Energy
     {
-        private double J = 1.0;
-        private double H = 1.0;
+        protected double J = 1.0;
+        protected double H = 0.0;
         
         public Energy.create(double J, double H)
         {

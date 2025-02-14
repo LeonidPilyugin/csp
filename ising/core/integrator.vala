@@ -19,7 +19,7 @@ namespace Core
 
         public System get_system()
         {
-            return this.system.copy();
+            return this.system;
         }
 
         public double get_temperature()
