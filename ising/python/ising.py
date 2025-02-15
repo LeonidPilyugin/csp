@@ -10,7 +10,7 @@ import warnings
 with warnings.catch_warnings(action="ignore"):
     from gi.repository import GLib, Core, Ising
 
-def ising(temperature, grid_size, ncycles, classic_ising=True):
+def _ising(temperature, grid_size, ncycles, classic_ising=True):
     assert grid_size % 2 == 0
     system = Ising.System.create(
         grid_size,
@@ -42,12 +42,15 @@ def ising(temperature, grid_size, ncycles, classic_ising=True):
 
     return np.asarray(steps), np.asarray(energies), np.asarray(magmoms)
 
-    # E_mean = energies.mean()
-    # M_mean = magmoms.mean()
-    # C = ((energies**2).mean() - E_mean ** 2) / temperature
-    # Chi = ((magmoms**2).mean() - M_mean ** 2) / temperature
+def ising(temperature, grid_size, ncycles):
+    _, energies, magmoms = _ising(temperature, grid_size, ncycles)
 
-    # return float(E_mean), float(M_mean), float(energies.std()), float(magmoms.std()), float(C), float(Chi)
+    E_mean = energies.mean()
+    M_mean = magmoms.mean()
+    C = ((energies**2).mean() - E_mean ** 2) / temperature ** 2
+    Chi = ((magmoms**2).mean() - M_mean ** 2) / temperature
+
+    return float(E_mean), float(M_mean), float(energies.std()), float(magmoms.std()), float(C), float(Chi)
 
     
 if __name__ == "__main__":
