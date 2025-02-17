@@ -5,6 +5,8 @@
 2) компилятор языка Vala (наверняка есть в репозиториях вашего дистрибутива, точно есть в репозиториях conda)
 3) g-ir-compiler (пакет должен иметь название вроде gobject-introspection)
 4) [PyGObject](https://pygobject.gnome.org/)
+5) numpy
+6) pandas
 
 ## Компиляция
 ```
