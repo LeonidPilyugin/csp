@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
         E_mean = energies.mean()
         M_mean = magmoms.mean()
-        C = ((energies**2).mean() - E_mean ** 2) / temperature
+        C = ((energies**2).mean() - E_mean ** 2) / temperature ** 2
         Chi = ((magmoms**2).mean() - M_mean ** 2) / temperature
 
         return random_seed, temperature, E_mean, energies.std(), M_mean, magmoms.std(), C, Chi
